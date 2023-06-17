@@ -1,0 +1,136 @@
+1. 
+Varibles contains data of different data types.
+declaring and initializing of data types are given below:
+
+declare
+v_value number :=5;
+begin
+dbms_output.put_line(v_value)
+end;
+
+here the variable (v_value) is declared with datatype(number). A value is assigned into it having the declared data type (number). When the whole program is run it will initialize and the output will be show.
+
+2.
+Bind variables are type of non-PlSql variable. These are not declared at beginning of block and exists only at run time. They can be called from inside the mandatory block (begin) anytime. The data of bind variables are not stored in database. They are also called Host variables. Syntax -> :b_value
+
+3.
+PL/Sql block types:
+	a. Anonymous block : they are used in run time only
+	b. Procedural block : can be saved and used for later use
+	c. Functional block : can be saved and used for later use
+Structure of block:
+	declare(optional) : the variables are declared here
+	begin (mandatory) : contains main code or conditions
+	exception (optional) : used for exception / error handling
+	end (mandatory) : needed to know that the program ends here
+
+4.
+Loops are of 3 types:
+a. Basic: used when the loop needed to run atleast once.
+begin
+ loop
+   ...
+ exit when condition[....]	
+ end loop;
+end;
+ 
+b. While: used when the program must run if the condition is met.
+begin
+ when condition[..] loop
+  ...
+ end loop;
+end;
+ 
+c. For: when noof iteration is know.
+begin
+  for i in startValue..EndValue loop
+    ...
+  end loop;
+end;
+
+5.
+Anonymous:
+	1.not stored in database
+	2.exists at run time
+	3.doesnt exits outside block
+	4.no return types
+	5.no input values
+
+Subprogram:
+	1.can be created outside block
+	2.stored in database
+	3.can be used/called anytime in any block
+	4.Function has return types
+	5.takes input values (in, out, in out)
+	6.two types; Procedure, Function.
+6.
+Syntax for Procedure->
+create or replace procedure p(v_val in integer) is
+begin
+...
+end;
+/
+execute p;
+
+Syntax for function ->
+create or replace funtion f(v_val in integer) 
+return number is v_out number;
+begin
+ ...
+ return v_out;
+end;
+/
+declare
+b number;
+begin
+f(5,b);
+end;
+
+7.
+
+create or replace procedure raiseSal(v_Id in number) is
+begin
+    select salary+salary*.10 as sal from employees where employee_id=v_Id;
+    update employees 
+    set employees.salary = sal 
+    where employee_id=v_Id;
+    
+    select * from employees where employee_id=v_Id;
+end;
+/
+execute raiseSal(198);
+
+
+8.
+Trigger is like firing statements. These are defined at begin or at end of statements and also at middle when necessary. Basically trigger is a type of alert message used to check or prompt the user that ("data is inserted sucessfully" or "There is error at inserting data"). 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
